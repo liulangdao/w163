@@ -26,6 +26,7 @@ class retrieve(object):
 	def executedb(self,link='',gettitle='',getcontent='',h=0,ins=False):
 		client = MongoClient('localhost',27017)
 		db = client.w163
+		db.authenticate("user","passwd")
 		w163 = db.w163
 		if ins:
 			data = { "hash":h,"date":time.ctime(),"url":link,"title":gettitle,"content":getcontent}
