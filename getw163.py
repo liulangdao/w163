@@ -16,7 +16,7 @@ class retrieve(object):
 	def getlinks(self):		
 		links = set()
 		html = urllib.request.urlopen(self.url,timeout=10)
-		bsObj = BeautifulSoup(html,from_encoding='gb18030')
+		bsObj = BeautifulSoup(html,"lxml",from_encoding='gb18030')
 		for url in  bsObj.findAll("a",href=re.compile("^(" + self.url + ")\d+.+(html)$")):
 			if url.attrs['href'] is not None:	
 				if url.attrs['href'] not in links:		
